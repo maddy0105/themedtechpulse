@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medtech News & Industry Updates - The Medtech Pulse</title>
+  <link rel="icon" type="image/x-icon" href="assets/logo_icon.png">
+  <meta name="description"
+    content="Explore breaking medical technology news, clinical diagnostics AI, robotic surgery developments, and regulatory frameworks updates on The Medtech Pulse.">
+  <meta name="keywords"
+    content="Medtech News, Robotic Surgery, Bio wearables, Medical AI, Healthcare Technology, FDA clearances">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <style>
+    /* The Medtech Pulse - Global Style System */
+
+    /* Modern Fonts Import */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+    /* CSS variables for Design System */
+    :root {
+      /* Color Palette - Light Mode */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(241, 245, 249, 0.8);
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+
+      --color-primary: #5e33aa;
+      /* Purple */
+      --color-primary-rgb: 94, 51, 170;
+      --color-secondary: #7c3aed;
+      /* Accent Violet */
+      --logo-wave-color: #5e33aa;
+      --logo-text-color: #1a0533;
+      --color-accent: #f43f5e;
+      /* Vibrant Coral */
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+
+      --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+      --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+      --inset-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+      --glow-effect: 0 0 20px rgba(14, 165, 233, 0.15);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-xl: 32px;
+
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --max-width: 1200px;
+    }
+
+    [data-theme="dark"] {
+      /* Color Palette - Dark Mode */
+      --bg-primary: #0b0f19;
+      --bg-secondary: #131926;
+      --bg-tertiary: #1e2638;
+      --glass-bg: rgba(19, 25, 38, 0.7);
+      --glass-border: rgba(30, 38, 56, 0.5);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --color-primary: #c084fc;
+      /* Brighter Violet */
+      --color-primary-rgb: 192, 132, 252;
+      --color-secondary: #a78bfa;
+      /* Brighter Purple */
+      --logo-wave-color: #c084fc;
+      --logo-text-color: #f8fafc;
+      --color-accent: #fb7185;
+      /* Brighter Coral */
+
+      --card-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5);
+      --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      --inset-shadow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.05);
+      --glow-effect: 0 0 25px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Global Resets */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-primary);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 1000;
+      box-shadow: var(--nav-shadow);
+      transition: background var(--transition-normal), border var(--transition-normal);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo-pulse {
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+    }
+
+    .logo-pulse::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+      animation: pulse-wave 1.5s infinite;
+    }
+
+    @keyframes pulse-wave {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(3.5);
+        opacity: 0;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: var(--border-radius-sm);
+    }
+
+    .nav-item a:hover,
+    .nav-item.active a {
+      color: var(--color-primary);
+      background-color: var(--bg-tertiary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Theme Switcher Toggle */
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      font-size: 18px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      background-color: var(--bg-secondary);
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      transform: rotate(15deg);
+    }
+
+    .theme-toggle-btn .sun-icon {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle-btn .sun-icon {
+      display: block;
+    }
+
+    [data-theme="dark"] .theme-toggle-btn .moon-icon {
+      display: none;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Main Section Offset for Navbar */
+    main {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px - 300px);
+    }
+
+    /* Hero Section Styles */
+    .hero {
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 80% 20%, rgba(var(--color-primary-rgb), 0.08) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--text-primary) 50%, var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--border-radius-md);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-tertiary);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pulse-circle-container {
+      width: 320px;
+      height: 320px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pulse-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+      border-radius: 50%;
+      animation: ring-pulse 4s infinite linear;
+    }
+
+    .pulse-ring:nth-child(2) {
+      width: 80%;
+      height: 80%;
+      animation-delay: 1s;
+    }
+
+    .pulse-ring:nth-child(3) {
+      width: 60%;
+      height: 60%;
+      animation-delay: 2s;
+    }
+
+    .pulse-center {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 40px;
+      box-shadow: var(--glow-effect);
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes ring-pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* Feature News Section */
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section-badge {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .section-link {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--color-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-link:hover {
+      color: var(--color-secondary);
+    }
+
+    .section-link i {
+      transition: transform var(--transition-fast);
+    }
+
+    .section-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Articles & Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 32px;
+    }
+
+    .article-card {
+      background-color: var(--bg-secondary);
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--glass-border);
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .article-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+      border-color: var(--color-primary);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background-color: var(--bg-tertiary);
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .article-card:hover .card-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background-color: var(--bg-secondary);
+      color: var(--color-secondary);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      z-index: 10;
+    }
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-title a:hover {
+      color: var(--color-primary);
+    }
+
+    .card-excerpt {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 16px;
+    }
+
+    .card-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .author-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .read-btn {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .read-btn i {
+      transition: transform var(--transition-fast);
+    }
+
+    .article-card:hover .read-btn i {
+      transform: translateX(4px);
+    }
+
+    /* Newsletter Section */
+    .newsletter-banner {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      border-radius: var(--border-radius-lg);
+      padding: 48px;
+      border: 1px solid var(--glass-border);
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .newsletter-banner::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .newsletter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .newsletter-info h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-info p {
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+    }
+
+    .form-input {
+      flex-grow: 1;
+      padding: 14px 20px;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--glass-border);
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 16px;
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .form-input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+    }
+
+    /* About Us Page Styles */
+    .about-hero {
+      text-align: center;
+      padding: 80px 0 60px;
+      position: relative;
+    }
+
+    .about-hero h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .about-hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 80px;
+    }
+
+    .about-card {
+      background-color: var(--bg-secondary);
+      padding: 40px;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--card-shadow);
+    }
+
+    .about-card-icon {
+      font-size: 32px;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+    }
+
+    .about-card h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .about-card p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .about-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-card ul li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .about-card ul li i {
+      color: var(--color-secondary);
+    }
+
+    .leadership-section {
+      text-align: center;
+      padding: 80px 0;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .leadership-title h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .leadership-title p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    .founders-grid {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .founder-card {
+      background-color: var(--bg-secondary);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--card-shadow);
+      padding: 40px 32px;
+      width: 320px;
+      text-align: center;
+      transition: all var(--transition-normal);
+    }
+
+    .founder-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-primary);
+    }
+
+    .founder-avatar-wrap {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      position: relative;
+      background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.1), rgba(var(--color-primary-rgb), 0.02));
+      border: 4px solid var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: border-color var(--transition-fast);
+    }
+
+    .founder-card:hover .founder-avatar-wrap {
+      border-color: var(--color-primary);
+    }
+
+    .founder-avatar-wrap i {
+      font-size: 64px;
+      color: var(--color-primary);
+    }
+
+    .founder-info h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .founder-info .role {
+      color: var(--color-secondary);
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .founder-info p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .founder-socials {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .founder-social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+
+    .founder-social-link:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background-color: var(--bg-tertiary);
+    }
+
+    /* News/Awareness Hub Filtering Header */
+    .hub-header {
+      padding: 60px 0 40px;
+    }
+
+    .hub-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .search-bar {
+      position: relative;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .search-bar i {
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      border-radius: 50px;
+      border: 1px solid var(--glass-border);
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 15px;
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .search-bar input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);
+    }
+
+    /* Empty State Styles */
+    .empty-state {
+      text-align: center;
+      padding: 80px 24px;
+      grid-column: 1 / -1;
+      background-color: var(--bg-secondary);
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--card-shadow);
+    }
+
+    .empty-state i {
+      font-size: 48px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .empty-state h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      color: var(--text-secondary);
+    }
+
+    /* Article Detail Reader Layout */
+    .article-reader-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 999;
+    }
+
+    .reading-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      border-radius: 0 2px 2px 0;
+      transition: width 0.1s ease;
+    }
+
+    .article-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 32px;
+    }
+
+    .article-back-link:hover {
+      color: var(--color-secondary);
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-header-tag {
+      display: inline-block;
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .article-header h1 {
+      font-size: 40px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .article-header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .article-header-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .article-header-author .author-avatar {
+      width: 44px;
+      height: 44px;
+      font-size: 16px;
+    }
+
+    .author-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-details .name {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .author-details .date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .article-header-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .share-btn {
+      background: none;
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .share-btn:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background-color: var(--bg-tertiary);
+      transform: translateY(-2px);
+    }
+
+    .article-featured-image {
+      width: 100%;
+      height: 450px;
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .article-featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-body {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .article-body p {
+      margin-bottom: 28px;
+    }
+
+    .article-body h3 {
+      font-size: 26px;
+      margin: 40px 0 20px;
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin-bottom: 28px;
+      padding-left: 24px;
+    }
+
+    .article-body li {
+      margin-bottom: 12px;
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding: 16px 24px;
+      margin: 36px 0;
+      background-color: var(--bg-tertiary);
+      border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+      font-style: italic;
+    }
+
+    .article-body blockquote cite {
+      display: block;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* Comments Section */
+    .comments-section {
+      margin-top: 60px;
+      padding-top: 48px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .comments-title {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    .comment-form {
+      margin-bottom: 40px;
+    }
+
+    .comment-textarea {
+      width: 100%;
+      height: 120px;
+      padding: 16px;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--glass-border);
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 15px;
+      outline: none;
+      resize: vertical;
+      transition: all var(--transition-fast);
+      margin-bottom: 16px;
+    }
+
+    .comment-textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+    }
+
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .comment-card {
+      display: flex;
+      gap: 16px;
+      background-color: var(--bg-secondary);
+      padding: 24px;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--glass-border);
+    }
+
+    .comment-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .comment-content {
+      flex-grow: 1;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .comment-author-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .comment-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .comment-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Contact Section on About Page */
+    .contact-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 48px;
+    }
+
+    .contact-info-wrap h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .contact-info-wrap p {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--border-radius-md);
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-details h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .contact-details p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .contact-form-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius-lg);
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--glass-border);
+      padding: 60px 0 30px;
+      box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.85fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-top: 16px;
+      max-width: 320px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-nav h4 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-primary);
+    }
+
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-nav ul li a {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .footer-nav ul li a:hover {
+      color: var(--color-primary);
+      padding-left: 4px;
+    }
+
+    .footer-nav ul li a i {
+      margin-right: 8px;
+    }
+
+    .footer-contact h4 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      background-color: var(--bg-primary);
+    }
+
+    .footer-social-btn:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.15);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-primary);
+    }
+
+    /* Toast Message Style */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+      border-left: 4px solid var(--color-success);
+      padding: 16px 24px;
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      color: var(--color-success);
+      font-size: 20px;
+    }
+
+    /* Responsiveness adjustments */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin: 0 auto 36px;
+      }
+
+      .hero-cta-group {
+        justify-content: center;
+      }
+
+      .newsletter-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 38px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        padding: 40px;
+        gap: 24px;
+        transition: left var(--transition-normal);
+        border-top: 1px solid var(--glass-border);
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .article-header h1 {
+        font-size: 28px;
+      }
+
+      .article-featured-image {
+        height: 250px;
+      }
+
+      .article-body {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body id="page-news">
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo" onclick="window.location.href='index.html'" aria-label="The Medtech Pulse Homepage">
+        <svg class="logo-svg" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg" width="220" height="42">
+          <path d="M10 30 H35 L42 18 L49 42 L56 6 L63 36 L70 26 L76 33 L82 30 H105" fill="none"
+            stroke="var(--logo-wave-color, #5e33aa)" stroke-width="3.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <text x="112" y="38" font-family="'Outfit', 'Inter', sans-serif" font-size="20" font-weight="800"
+            fill="var(--logo-text-color, #1a0533)" letter-spacing="0.2">THE MEDTECH PULSE</text>
+        </svg>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="news.html">Medtech News</a></li>
+          <li class="nav-item"><a href="awareness.html">Patient Awareness</a></li>
+          <li class="nav-item"><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Theme" id="theme-toggle">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main>
+
+    <!-- News Hub Filtering Header -->
+    <section class="hub-header">
+      <div class="container">
+        <span class="section-badge">Industry Portal</span>
+        <h1>Medtech News & Industry Updates</h1>
+        <p style="color: var(--text-secondary); max-width: 600px; margin-top: 8px;">Explore cutting-edge updates on
+          digital health, FDA regulations, surgical robotics breakthroughs, and biomedical technology trends.</p>
+
+        <!-- Controls: Real-time search and category chips -->
+        <div class="hub-controls">
+          <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="hub-search" placeholder="Search news by keywords, tags..."
+              aria-label="Search articles">
+          </div>
+
+          <div class="filter-group" id="hub-filter-group">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Grid List -->
+    <section class="section" style="padding-top: 20px;">
+      <div class="container">
+        <div class="cards-grid" id="hub-cards-grid">
+          <!-- Injected dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Area -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" aria-label="The Medtech Pulse">
+            <svg class="logo-svg" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg" width="220" height="42">
+              <path d="M10 30 H35 L42 18 L49 42 L56 6 L63 36 L70 26 L76 33 L82 30 H105" fill="none"
+                stroke="var(--logo-wave-color, #5e33aa)" stroke-width="3.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <text x="112" y="38" font-family="'Outfit', 'Inter', sans-serif" font-size="20" font-weight="800"
+                fill="var(--logo-text-color, #1a0533)" letter-spacing="0.2">THE MEDTECH PULSE</text>
+            </svg>
+          </div>
+          <p>A premium news, intelligence, and patient-awareness platform focused on the dynamic landscape of medical
+            technology and wellness education.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Sitemap</h4>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="news.html"><i class="fa-solid fa-chevron-right"></i> Medtech News</a></li>
+            <li><a href="awareness.html"><i class="fa-solid fa-chevron-right"></i> Patient Awareness</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Connect With Us</h4>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 15px;">Have an editorial tip or press
+            release? Get in touch with our founders.</p>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Medtech Pulse. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="about.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Database & Scripts -->
+  <script>// The Medtech Pulse - Mock Database
+    // Stored as a global array to allow direct loading via script tags without CORS issues.
+
+    const ARTICLES = [
+      {
+        id: 1,
+        title: "AI-Powered Diagnostics: Reimagining Early Disease Detection",
+        category: "news",
+        tag: "Artificial Intelligence",
+        date: "July 2, 2026",
+        readTime: "5 min read",
+        author: "Dr. Elena Rostova",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+        excerpt: "New machine learning algorithms are identifying subtle patterns in medical imaging years before physical symptoms manifest, marking a new frontier in preventative healthcare.",
+        content: `
+      <p>Artificial Intelligence is no longer a futuristic concept in medicine; it is actively rewriting the standards of patient care. In recent months, clinical trials across the globe have demonstrated that deep learning algorithms can identify anomalies in MRI and CT scans with accuracy rates that rival, and in some cases exceed, senior radiologists.</p>
+      
+      <h3>The Power of Early Pattern Recognition</h3>
+      <p>Traditional diagnostic methods rely heavily on the visual identification of pathological changes. However, by the time a tumor or vascular change is visible to the human eye on an imaging scan, the underlying disease may have already progressed. AI models trained on millions of historical scans look deeper. They analyze micro-textures, pixel density variations, and subtle symmetry anomalies that escape human detection.</p>
+      
+      <blockquote>
+        "We are shifting from a reactive diagnostic model to a predictive one. AI allows us to see the storm forming long before the first drop of rain falls."
+        <cite>— Dr. Elena Rostova, Director of Medtech Research</cite>
+      </blockquote>
+
+      <h3>Key Breakthroughs in 2026</h3>
+      <ul>
+        <li><strong>Oncology:</strong> Neural networks identifying early-stage breast cancer lesions up to two years before they manifest as mammographically detectable masses.</li>
+        <li><strong>Cardiology:</strong> Algorithms predicting risk of acute cardiac events by analyzing minor coronary calcification patterns on routine chest X-rays.</li>
+        <li><strong>Neurology:</strong> Retinal scans combined with deep learning to detect early biomarkers of Alzheimer’s disease with 92% accuracy.</li>
+      </ul>
+
+      <h3>Navigating the Regulatory and Ethical Landscape</h3>
+      <p>While the potential is astronomical, integrating AI into daily clinical workflows introduces challenges. Healthcare providers must address questions of algorithmic bias, data privacy, and the 'black box' problem—where developers cannot easily explain how an AI reached a specific conclusion. The FDA and European Medicines Agency (EMA) are updating framework guidelines to ensure AI diagnostics remain safe, interpretable, and equitable.</p>
+    `
+      },
+      {
+        id: 2,
+        title: "Robotic Surgery Enters the Nano-Scale Era",
+        category: "news",
+        tag: "Surgical Robotics",
+        date: "June 28, 2026",
+        readTime: "7 min read",
+        author: "Marcus Vance",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Miniaturized surgical robots are transitioning from labs to operating tables, promising ultra-precise, stitchless surgeries that reduce patient recovery times to mere hours.",
+        content: `
+      <p>The field of surgical robotics is undergoing a dramatic transformation. While systems like da Vinci pioneered laparoscopic precision, the next wave of innovation focuses on the micro and nano-scales. Engineers have developed micro-catheters and wireless capsule robots that can navigate the human circulatory system to perform targeted interventions.</p>
+      
+      <h3>Inside the World of Micro-Robotics</h3>
+      <p>These tiny devices, often smaller than a grain of rice, are guided externally using electromagnetic fields. They can navigate through delicate blood vessels in the brain to clear blockages or deliver microscopic payloads of chemotherapy directly to the core of a tumor, bypassing healthy tissues entirely.</p>
+      
+      <h3>Key Clinical Advantages</h3>
+      <p>By minimizing the incision size to a microscopic level, patients experience significantly less trauma. Benefits observed in recent pilot studies include:</p>
+      <ul>
+        <li>Reduction in average hospital stay from 5 days to under 12 hours for complex vascular procedures.</li>
+        <li>Incredibly low rates of post-operative infection due to the non-invasive nature of the electromagnetic guides.</li>
+        <li>Minimal requirement for general anesthesia, opening up complex surgeries to elderly or frail patients.</li>
+      </ul>
+
+      <h3>The Horizon: Autonomous Interventions</h3>
+      <p>Currently, these systems are teleoperated by highly specialized surgeons. However, research teams are testing autonomous navigation loops. In these setups, the robot maps the surgical path in real-time, adjusting to blood flow or tissue resistance faster than a human operator could react. We expect the first regulatory approvals for semi-autonomous vascular robots by late 2027.</p>
+    `
+      },
+      {
+        id: 3,
+        title: "Next-Gen Bio-Wearables: Continuous Health Tracking Beyond Steps",
+        category: "news",
+        tag: "Wearable Tech",
+        date: "June 15, 2026",
+        readTime: "4 min read",
+        author: "Sarah Jenkins",
+        image: "https://images.unsplash.com/photo-1510017808638-f507213a914e?auto=format&fit=crop&q=80&w=800",
+        excerpt: "The boundary between consumer fitness trackers and medical-grade diagnostic devices is dissolving, as new sensors capture continuous hormone, glucose, and hydration levels.",
+        content: `
+      <p>A quiet revolution is happening on our wrists and skin. The latest generation of bio-wearables has evolved far beyond counting steps and monitoring basic heart rate. Today, continuous, non-invasive tracking of blood chemistry is becoming a commercial reality, giving patients unprecedented control over their health data.</p>
+      
+      <h3>Deciphering Interstitial Fluid</h3>
+      <p>Instead of relying on painful finger-prick blood draws, new bio-wearable patches utilize arrays of microscopic needles that penetrate only the outermost layer of the skin. These pain-free micro-needles sample interstitial fluid to measure complex biomarkers in real-time, including:</p>
+      <ul>
+        <li><strong>Continuous Glucose & Lactate:</strong> Tracking metabolic response during daily activities and high-intensity exercises.</li>
+        <li><strong>Cortisol Levels:</strong> Monitoring stress hormones dynamically throughout the workday.</li>
+        <li><strong>Electrolytes & Hydration:</strong> Predicting heat stress and dehydration before physical symptoms arise.</li>
+      </ul>
+
+      <h3>Empowering Preventative Medicine</h3>
+      <p>By streaming this data securely to patient apps and integrated clinical portals, physicians can catch early indicators of metabolic disorders, heart disease, or endocrine imbalances. Instead of a once-a-year snapshot during an annual physical, doctors now have access to a rich, contextual video of a patient's physiological state.</p>
+    `
+      },
+      {
+        id: 4,
+        title: "Understanding Cardiovascular Health: Practical Steps for Heart Longevity",
+        category: "awareness",
+        tag: "Cardiology",
+        date: "July 1, 2026",
+        readTime: "6 min read",
+        author: "Dr. Amit Patel, FACC",
+        image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Heart disease remains a leading cause of mortality worldwide. Learn the modern science of heart health, key risk factors, and actionable lifestyle modifications.",
+        content: `
+      <p>Cardiovascular disease (CVD) affects millions of lives globally. While genetics plays a role, a significant majority of heart-related events are highly preventable through informed, proactive choices. Managing your heart health is a lifelong journey of understanding your body's signals and nourishing your vascular system.</p>
+      
+      <h3>The Mechanics of Heart Health</h3>
+      <p>Your heart is an incredibly resilient muscular pump, contracting around 100,000 times a day. Over time, factors like high blood pressure, elevated low-density lipoprotein (LDL) cholesterol, and chronic inflammation can cause plaque build-up in the coronary arteries. This process, known as atherosclerosis, restricts blood flow and can lead to heart attacks or strokes.</p>
+
+      <h3>Key Risk Factors to Monitor</h3>
+      <p>It is vital to collaborate with your physician to monitor the 'Big Four' metrics:</p>
+      <ol>
+        <li><strong>Blood Pressure:</strong> Aim for a baseline below 120/80 mmHg. High blood pressure strains blood vessels, making them prone to damage.</li>
+        <li><strong>Lipid Profile:</strong> Focus not just on total cholesterol, but on reducing ApoB and LDL cholesterol while maintaining healthy HDL.</li>
+        <li><strong>HbA1c (Blood Sugar):</strong> High blood glucose damages arterial linings, exponentially increasing vascular risks.</li>
+        <li><strong>High-Sensitivity CRP (hs-CRP):</strong> A key marker of systemic inflammation that helps predict arterial plaque vulnerability.</li>
+      </ol>
+
+      <h3>Actionable Steps for Heart Longevity</h3>
+      <p>Simple, consistent changes yield massive compound benefits over time:</p>
+      <ul>
+        <li><strong>Aerobic and Resistance Training:</strong> Engage in at least 150 minutes of moderate-intensity zone-2 cardio per week, paired with strength training.</li>
+        <li><strong>Mediterranean-Style Nutrition:</strong> Prioritize whole, fiber-rich foods, extra virgin olive oil, leafy greens, wild-caught fish, and berries while limiting processed sugars and trans fats.</li>
+        <li><strong>Sleep Optimization:</strong> Prioritize 7-8 hours of quality sleep to facilitate cellular repair and regulate autonomic nervous system tone.</li>
+        <li><strong>Stress Mitigation:</strong> Practice mindfulness, breathwork, or regular outdoor walks to lower resting cortisol and heart rate.</li>
+      </ul>
+    `
+      },
+      {
+        id: 5,
+        title: "Demystifying Diabetes: Types, Symptoms, and Modern Management",
+        category: "awareness",
+        tag: "Endocrinology",
+        date: "June 25, 2026",
+        readTime: "8 min read",
+        author: "Dr. Sarah Al-Mansoori",
+        image: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Diabetes is a complex metabolic condition, but with modern technology and lifestyle interventions, patients can achieve full remission and lead vibrant lives.",
+        content: `
+      <p>Diabetes is one of the most common chronic conditions in the world today. Understanding how diabetes affects the body is the first and most critical step in taking charge of the diagnosis. With the advent of continuous glucose monitors (CGMs) and personalized medical nutrition therapy, managing diabetes is more precise and accessible than ever before.</p>
+      
+      <h3>The Core Types of Diabetes</h3>
+      <p>Diabetes centers on how the body processes glucose (blood sugar), which is the primary fuel source for our cells. Insulin, a hormone produced by the pancreas, acts as the key that unlocks cells to let glucose enter.</p>
+      <ul>
+        <li><strong>Type 1 Diabetes:</strong> An autoimmune condition where the body’s immune system attacks insulin-producing beta cells in the pancreas. Daily insulin therapy is essential.</li>
+        <li><strong>Type 2 Diabetes:</strong> A condition where cells become resistant to the effects of insulin, causing glucose to build up in the bloodstream. It is closely linked to lifestyle, metabolic health, and genetics.</li>
+        <li><strong>Gestational Diabetes:</strong> High blood sugar that develops during pregnancy and usually resolves after childbirth, though it increases future risk for Type 2 diabetes.</li>
+      </ul>
+
+      <h3>Recognizing the Warning Signs</h3>
+      <p>Early symptoms can be subtle. Consult a healthcare provider if you experience:</p>
+      <ul>
+        <li>Increased, unquenchable thirst (polydipsia) and frequent urination, especially at night.</li>
+        <li>Unexplained fatigue, lethargy, or blurred vision.</li>
+        <li>Slow-healing cuts, bruises, or frequent infections.</li>
+        <li>Sudden, unintended weight loss (more common in Type 1).</li>
+      </ul>
+
+      <h3>Modern Management and Remission</h3>
+      <p>For Type 2 Diabetes, historical paradigms viewed the condition as progressive and irreversible. Today, we know that many patients can achieve clinical remission through targeted carbohydrate restriction, weight management, and resistance training. Additionally, automated insulin delivery systems (often called 'closed-loop artificial pancreas' systems) have revolutionized the safety and quality of life for Type 1 diabetics.</p>
+    `
+      },
+
+      {
+        id: 7,
+        title: "Medtronic starts to notify people affected by cyberattack",
+        category: "news",
+        tag: "Cybersecurity",
+        date: "July 4, 2026",
+        readTime: "4 min read",
+        author: "Marcus Vance",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Medical device giant Medtronic has begun informing patients and healthcare systems about a data breach involving personal identifiers and clinical telemetry.",
+        content: `
+      <p>Medical technology giant Medtronic has initiated notifications to patients and healthcare systems following a sophisticated cybersecurity incident. The breach, which occurred earlier this quarter, exposed certain databases containing patient personal identifiers and medical device telemetry data.</p>
+      
+      <h3>What Information Was Accessed?</h3>
+      <p>According to Medtronic's security advisory, the compromised systems contained records related to cardiac monitoring device users. The accessed data includes names, dates of birth, clinical descriptions of implanted devices, and, in some cases, remote monitoring logs.</p>
+      
+      <blockquote>
+        "Our team detected unusual network activity and immediately mobilized cybersecurity experts to isolate the affected systems. We are working closely with federal law enforcement and regulatory bodies to address this incident."
+        <cite>— Medtronic Global Security Office</cite>
+      </blockquote>
+
+      <h3>Clinical Impact and Device Safety</h3>
+      <p>Crucially, Medtronic has stated there is no evidence that patient safety or device functionality was compromised. There have been no instances of unauthorized command transmission or modification of therapy parameters. The data breach appears to be limited to information storage systems rather than operational control portals.</p>
+      
+      <h3>Industry-wide Cybersecurity Concerns</h3>
+      <p>This incident underscores the rising frequency of cyber threats targeting health technology organizations. As medical systems become increasingly interconnected and rely on cloud networks for remote monitoring, securing patient data has become a primary regulatory and technological challenge for the medtech sector.</p>
+    `
+      },
+      {
+        id: 8,
+        title: "Guardant's Shield colon cancer blood test snags UnitedHealth coverage",
+        category: "news",
+        tag: "Diagnostics",
+        date: "July 4, 2026",
+        readTime: "3 min read",
+        author: "Sarah Jenkins",
+        image: "https://images.unsplash.com/photo-1579152183803-8555283750d0?auto=format&fit=crop&q=80&w=800",
+        excerpt: "UnitedHealth Group has agreed to cover Guardant Health's Shield blood test for colon cancer screening, expanding patient access to non-invasive diagnostics.",
+        content: `
+      <p>Guardant Health secured a major reimbursement victory this week as UnitedHealth Group, the nation's largest commercial health insurer, announced policy coverage for the Shield blood test. The decision will expand screening options for colorectal cancer to millions of eligible adult members.</p>
+      
+      <h3>A Milestone for Blood-Based Screening</h3>
+      <p>Colorectal cancer is highly treatable if detected early, yet screening compliance remains low due to the invasive nature of colonoscopies. Guardant's Shield test offers a simple, blood-based alternative that detects circulating tumor DNA (ctDNA) shed by cancerous cells and advanced adenomas.</p>
+      
+      <h3>Efficacy and Guidelines Integration</h3>
+      <p>The coverage decision follows clinical data demonstrating Shield's high sensitivity for detecting colorectal cancer. The test is designed for average-risk individuals aged 45 and older, aligning with updated clinical guidelines aimed at lowering the starting age for routine screenings.</p>
+    `
+      },
+      {
+        id: 9,
+        title: "Terumo recalls stent-graft system linked to three deaths",
+        category: "news",
+        tag: "Product Recall",
+        date: "July 3, 2026",
+        readTime: "4 min read",
+        author: "Dr. Elena Rostova",
+        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Terumo Aortic has initiated a Class I recall of its stent-graft system following reports of adverse events and mechanical failures.",
+        content: `
+      <p>Terumo Aortic has issued an urgent Class I recall for its thoracic stent-graft system, following reports of mechanical issues that led to serious clinical complications, including three patient deaths. The FDA has designated this recall as Class I, the most severe category, indicating that use of the device may cause serious adverse health consequences or death.</p>
+      
+      <h3>Nature of the Defect</h3>
+      <p>The recall concerns delivery system malfunctions and graft displacement during implantation. Investigators identified a manufacturing variance that could cause the deployment line to snap, leading to incomplete or inaccurate positioning of the stent-graft within the aorta.</p>
+      
+      <h3>Clinical Recommendations</h3>
+      <p>Terumo has advised healthcare facilities to immediately halt use of the affected product lots. For patients who have already received the implants, physicians are recommended to perform standard post-operative imaging and follow-up to check graft position and structural integrity.</p>
+    `
+      },
+      {
+        id: 10,
+        title: "FDA authorizes more devices so far in 2026, but it's taking longer",
+        category: "news",
+        tag: "Regulatory",
+        date: "July 2, 2026",
+        readTime: "5 min read",
+        author: "Marcus Vance",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
+        excerpt: "An analysis of FDA medical device clearance data shows a high volume of approvals in the first half of 2026, but average review cycles have lengthened.",
+        content: `
+      <p>A mid-year review of FDA regulatory databases shows that while the agency has authorized a record volume of new medical devices in the first half of 2026, the average length of the review process has noticeably lengthened. This trend presents a double-edged sword for developers navigating the clearance pipeline.</p>
+      
+      <h3>Increased Volume and Complex Technologies</h3>
+      <p>The rise in clearance volume is largely driven by a surge in digital health applications and AI-enabled diagnostics. These complex technologies require specialized review panels, which has placed additional strain on the agency's resources and contributed to the overall timeline inflation.</p>
+      
+      <h3>Navigating the Extended Timelines</h3>
+      <p>Industry consultants suggest that medtech firms must plan for longer lead times and ensure their pre-market submissions contain comprehensive cybersecurity and algorithm validation data to minimize delays during the review cycle.</p>
+    `
+      },
+      {
+        id: 11,
+        title: "Top medtech conferences in 2026",
+        category: "news",
+        tag: "Industry Events",
+        date: "July 1, 2026",
+        readTime: "6 min read",
+        author: "Editorial Team",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Mark your calendars for the premier medical technology gatherings, expositions, and scientific symposia scheduled across the globe in 2026.",
+        content: `
+      <p>The medical technology sector continues to evolve at a blistering pace. For founders, researchers, investors, and clinical experts, staying ahead means connecting at key industry forums. Here is a curated guide to the top medtech conferences scheduled in 2026 that you cannot afford to miss.</p>
+      
+      <h3>1. MedTech Rising (Boston, MA)</h3>
+      <p>Focusing on global commercialization strategies, regulatory pivots, and capital markets. This event gathers top executives from major device makers alongside venture capital leaders.</p>
+      
+      <h3>2. Digital Health World Expo (Munich, Germany)</h3>
+      <p>The premier European gathering for software-as-a-medical-device (SaMD), clinical AI, remote patient monitoring platforms, and wearable technology developers.</p>
+      
+      <h3>3. CardioDevice Congress (Chicago, IL)</h3>
+      <p>A specialized medical symposium detailing breakthroughs in structural heart innovations, next-gen pacemakers, and robotic endovascular surgery systems.</p>
+    `
+      },
+      {
+        id: 12,
+        title: "US blocks quick USMCA extension, putting annual review process into motion",
+        category: "news",
+        tag: "Global Trade",
+        date: "June 30, 2026",
+        readTime: "4 min read",
+        author: "Editorial Team",
+        image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800",
+        excerpt: "Trade tensions affect international medical supply chains as the US calls for a rigorous annual review of the USMCA pact instead of an automatic extension.",
+        content: `
+      <p>The United States government has declined to approve an automatic extension of the USMCA trade agreement with Canada and Mexico, triggering a mandatory annual review process. This decision is raising questions across North American medical device manufacturing sectors, which rely heavily on cross-border supply chains.</p>
+      
+      <h3>Border Crossings and Regulatory Alignments</h3>
+      <p>Many major medical device organizations manufacture complex electronics and components in the US, assemble them in Mexican maquiladoras, and re-import finished products. The upcoming trade reviews will evaluate labor standards, intellectual property rules, and environmental regulations, potentially introducing tariff uncertainties.</p>
+      
+      <h3>Ensuring Supply Chain Resilience</h3>
+      <p>Logistics analysts advise companies to reassess their manufacturing footprints and establish safety stocks of critical sub-assemblies to insulate operations from potential trade friction over the next 18 months.</p>
+    `
+      }
+    ];
+  </script>
+  <script>
+    // The Medtech Pulse - Core Interactivity and Rendering Engine
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Initialize Theme (Dark/Light mode)
+      initTheme();
+
+      // 2. Initialize Navigation (Mobile burger menu and active links)
+      initNavigation();
+
+      // 3. Page Router Logic - Execute code based on current view page
+      initPageRouter();
+    });
+
+    /* ==========================================================================
+       1. Theme Management
+       ========================================================================== */
+    function initTheme() {
+      const themeToggleBtns = document.querySelectorAll(".theme-toggle-btn");
+      const currentTheme = localStorage.getItem("theme") || "light";
+
+      // Apply initial theme
+      document.documentElement.setAttribute("data-theme", currentTheme);
+
+      themeToggleBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const activeTheme = document.documentElement.getAttribute("data-theme");
+          const newTheme = activeTheme === "dark" ? "light" : "dark";
+
+          document.documentElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
+        });
+      });
+    }
+
+    /* ==========================================================================
+       2. Navigation
+       ========================================================================== */
+    function initNavigation() {
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+          const icon = mobileMenuBtn.querySelector("i");
+          if (icon) {
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-xmark");
+          }
+        });
+      }
+
+      // Highlight Active Nav Link
+      const currentPath = window.location.pathname;
+      const navItems = document.querySelectorAll(".nav-item");
+
+      navItems.forEach(item => {
+        const link = item.querySelector("a");
+        if (link) {
+          const href = link.getAttribute("href");
+          if (currentPath.includes(href) && href !== "index.html") {
+            item.classList.add("active");
+          } else if (href === "index.html" && (currentPath.endsWith("/") || currentPath.endsWith("index.html") || currentPath === "")) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        }
+      });
+
+      // Newsletter Subscription
+      const newsletterForm = document.querySelector(".newsletter-form");
+      if (newsletterForm) {
+        newsletterForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const emailInput = newsletterForm.querySelector("input[type='email']");
+          if (emailInput && emailInput.value.trim()) {
+            showToast("Successfully subscribed to The Medtech Pulse newsletter!");
+            emailInput.value = "";
+          }
+        });
+      }
+    }
+
+    /* ==========================================================================
+       3. Page Router & Dynamic Controllers
+       ========================================================================== */
+    function initPageRouter() {
+      const bodyId = document.body.id;
+
+      switch (bodyId) {
+        case "page-home":
+          initHomePage();
+          break;
+        case "page-news":
+          initHubPage("news");
+          break;
+        case "page-awareness":
+          initHubPage("awareness");
+          break;
+        case "page-article":
+          initArticleReaderPage();
+          break;
+        case "page-about":
+          initAboutPage();
+          break;
+        default:
+          console.log("General page loaded.");
+      }
+    }
+
+    /* --- Homepage Controller --- */
+    function initHomePage() {
+      const newsContainer = document.getElementById("featured-news-grid");
+      const awarenessContainer = document.getElementById("awareness-blog-grid");
+
+      if (typeof ARTICLES === "undefined") return;
+
+      // Filter out articles
+      const newsArticles = ARTICLES.filter(art => art.category === "news").slice(0, 3);
+      const awarenessArticles = ARTICLES.filter(art => art.category === "awareness").slice(0, 3);
+
+      // Render News
+      if (newsContainer) {
+        if (newsArticles.length > 0) {
+          newsContainer.innerHTML = newsArticles.map(art => renderArticleCard(art)).join("");
+        } else {
+          newsContainer.innerHTML = `<p class="text-secondary">No featured news available at the moment.</p>`;
+        }
+      }
+
+      // Render Patient Awareness
+      if (awarenessContainer) {
+        if (awarenessArticles.length > 0) {
+          awarenessContainer.innerHTML = awarenessArticles.map(art => renderArticleCard(art)).join("");
+        } else {
+          awarenessContainer.innerHTML = `<p class="text-secondary">No awareness articles available at the moment.</p>`;
+        }
+      }
+    }
+
+    /* --- Hub Pages Controller (Shared by news.html and awareness.html) --- */
+    function initHubPage(category) {
+      const cardsGrid = document.getElementById("hub-cards-grid");
+      const searchInput = document.getElementById("hub-search");
+      const filterGroup = document.getElementById("hub-filter-group");
+
+      if (typeof ARTICLES === "undefined" || !cardsGrid) return;
+
+      // Filter articles based on primary category
+      const listArticles = ARTICLES.filter(art => art.category === category);
+
+      // Generate Unique Subcategory Tags for Filtering
+      const uniqueTags = [...new Set(listArticles.map(art => art.tag))];
+
+      if (filterGroup) {
+        filterGroup.innerHTML = `
+      <button class="filter-btn active" data-filter="all">All</button>
+      ${uniqueTags.map(tag => `<button class="filter-btn" data-filter="${tag}">${tag}</button>`).join("")}
+    `;
+
+        // Filter Button Click Handling
+        const filterButtons = filterGroup.querySelectorAll(".filter-btn");
+        filterButtons.forEach(btn => {
+          btn.addEventListener("click", () => {
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            filterAndRender();
+          });
+        });
+      }
+
+      // Search Input Event Handling
+      if (searchInput) {
+        searchInput.addEventListener("input", filterAndRender);
+      }
+
+      // Initial Render
+      filterAndRender();
+
+      function filterAndRender() {
+        let filtered = [...listArticles];
+
+        // Filter by Tag
+        const activeFilterBtn = filterGroup ? filterGroup.querySelector(".filter-btn.active") : null;
+        const activeTag = activeFilterBtn ? activeFilterBtn.getAttribute("data-filter") : "all";
+        if (activeTag !== "all") {
+          filtered = filtered.filter(art => art.tag === activeTag);
+        }
+
+        // Filter by Search Query
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+        if (query !== "") {
+          filtered = filtered.filter(art =>
+            art.title.toLowerCase().includes(query) ||
+            art.excerpt.toLowerCase().includes(query) ||
+            art.tag.toLowerCase().includes(query)
+          );
+        }
+
+        // Display Results
+        if (filtered.length > 0) {
+          cardsGrid.innerHTML = filtered.map(art => renderArticleCard(art)).join("");
+        } else {
+          cardsGrid.innerHTML = `
+        <div class="empty-state">
+          <i class="fa-regular fa-folder-open"></i>
+          <h3>No articles found</h3>
+          <p>Try adjusting your search terms or filters to find what you're looking for.</p>
+        </div>
+      `;
+        }
+      }
+    }
+
+    /* --- Article Detail Reader Controller --- */
+    function initArticleReaderPage() {
+      const container = document.getElementById("article-reader");
+
+      if (typeof ARTICLES === "undefined" || !container) return;
+
+      // Extract ID from URL (?id=...)
+      const params = new URLSearchParams(window.location.search);
+      const articleId = parseInt(params.get("id"));
+
+      const article = ARTICLES.find(art => art.id === articleId);
+
+      if (!article) {
+        container.innerHTML = `
+      <div class="empty-state" style="margin-top: 40px;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h3>Article Not Found</h3>
+        <p>The article you are trying to access does not exist or has been moved.</p>
+        <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">
+          <i class="fa-solid fa-arrow-left"></i> Return Home
+        </a>
+      </div>
+    `;
+        return;
+      }
+
+      // Render Article Content
+      container.innerHTML = `
+    <a href="${article.category === 'news' ? 'news.html' : 'awareness.html'}" class="article-back-link">
+      <i class="fa-solid fa-arrow-left"></i> Back to ${article.category === 'news' ? 'Medtech News' : 'Patient Awareness'}
+    </a>
+    
+    <article class="article-detail">
+      <header class="article-header">
+        <span class="article-header-tag">${article.tag}</span>
+        <h1>${article.title}</h1>
+        <div class="article-header-meta">
+          <div class="article-header-author">
+            <div class="author-avatar">${getInitials(article.author)}</div>
+            <div class="author-details">
+              <span class="name">${article.author}</span>
+              <span class="date">${article.date} • ${article.readTime}</span>
+            </div>
+          </div>
+          <div class="article-header-actions">
+            <button class="share-btn" onclick="shareArticle('twitter', '${article.title}')" title="Share on Twitter"><i class="fa-brands fa-twitter"></i></button>
+            <button class="share-btn" onclick="shareArticle('linkedin', '${article.title}')" title="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></button>
+            <button class="share-btn" onclick="shareArticle('copy', '${article.title}')" title="Copy Link"><i class="fa-solid fa-link"></i></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="article-featured-image">
+        <img src="${article.image}" alt="${article.title}">
+      </div>
+
+      <div class="article-body">
+        ${article.content}
+      </div>
+    </article>
+
+    <section class="comments-section">
+      <h3 class="comments-title">Discussion</h3>
+      <form class="comment-form" id="comment-form">
+        <textarea class="comment-textarea" placeholder="Share your thoughts or questions on this topic..." required></textarea>
+        <button type="submit" class="btn btn-primary">Post Comment</button>
+      </form>
+      <div class="comments-list" id="comments-list">
+        <div class="comment-card">
+          <div class="comment-avatar">JD</div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-author-name">Dr. Joshua Davis</span>
+              <span class="comment-date">2 hours ago</span>
+            </div>
+            <p class="comment-text">This is a major step forward. The integration of high-resolution bio-sensors into daily wear will unlock predictive medicine at an unprecedented level. Looking forward to clinical trial publications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+
+      // Set page document title dynamically
+      document.title = `${article.title} - The Medtech Pulse`;
+
+      // Reading Progress Bar handler
+      initReadingProgressBar();
+
+      // Comment Submission Handler
+      const commentForm = document.getElementById("comment-form");
+      const commentsList = document.getElementById("comments-list");
+      if (commentForm && commentsList) {
+        commentForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const textarea = commentForm.querySelector("textarea");
+          const text = textarea.value.trim();
+
+          if (text) {
+            const newComment = document.createElement("div");
+            newComment.className = "comment-card";
+            newComment.innerHTML = `
+          <div class="comment-avatar">ME</div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-author-name">You (Reader)</span>
+              <span class="comment-date">Just now</span>
+            </div>
+            <p class="comment-text">${escapeHtml(text)}</p>
+          </div>
+        `;
+            // Insert new comment at the top of the comments list
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+            textarea.value = "";
+            showToast("Comment posted successfully!");
+          }
+        });
+      }
+    }
+
+    /* --- About Us Page Controller --- */
+    function initAboutPage() {
+      const contactForm = document.getElementById("contact-form");
+      if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const name = contactForm.querySelector("#contact-name").value.trim();
+          const email = contactForm.querySelector("#contact-email").value.trim();
+          const subject = contactForm.querySelector("#contact-subject").value.trim();
+          const message = contactForm.querySelector("#contact-message").value.trim();
+
+          if (name && email && message) {
+            showToast(`Thank you ${name}! Your inquiry has been sent to our editorial desk.`);
+            contactForm.reset();
+          }
+        });
+      }
+    }
+
+    /* ==========================================================================
+       4. UI Helper Utilities
+       ========================================================================== */
+
+    /* --- Dynamic Reading Progress Bar --- */
+    function initReadingProgressBar() {
+      const progressBar = document.getElementById("reading-progress");
+
+      if (!progressBar) return;
+
+      window.addEventListener("scroll", () => {
+        const windowScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        // Calculate total scrollable height
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (windowScroll / height) * 100 : 0;
+        progressBar.style.width = scrolled + "%";
+      });
+    }
+
+    /* --- HTML Escaper --- */
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    /* --- Get Name Initials --- */
+    function getInitials(name) {
+      if (!name) return "MP";
+      const parts = name.split(" ");
+      if (parts.length >= 2) {
+        // Return first letters of first and last name, e.g. "Amit Patel" -> "AP"
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      }
+      return name.slice(0, 2).toUpperCase();
+    }
+
+    /* --- Share Article Mock Function --- */
+    window.shareArticle = function (platform, title) {
+      const url = window.location.href;
+
+      if (platform === "copy") {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast("Link copied to clipboard!");
+        }).catch(err => {
+          console.error("Could not copy text: ", err);
+        });
+      } else if (platform === "twitter") {
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent("Read: " + title)}&url=${encodeURIComponent(url)}`;
+        window.open(shareUrl, "_blank", "width=600,height=400");
+      } else if (platform === "linkedin") {
+        const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        window.open(shareUrl, "_blank", "width=600,height=400");
+      }
+    };
+
+    /* --- Article Card Template Renderer --- */
+    function renderArticleCard(article) {
+      return `
+    <article class="article-card">
+      <div class="card-img-wrap">
+        <span class="card-tag">${article.tag}</span>
+        <img src="${article.image}" alt="${article.title}" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="card-meta">
+          <span><i class="fa-regular fa-calendar"></i> ${article.date}</span>
+          <span><i class="fa-regular fa-clock"></i> ${article.readTime}</span>
+        </div>
+        <h3 class="card-title">
+          <a href="article.html?id=${article.id}">${article.title}</a>
+        </h3>
+        <p class="card-excerpt">${article.excerpt}</p>
+        <div class="card-footer">
+          <div class="card-author">
+            <div class="author-avatar">${getInitials(article.author)}</div>
+            <span class="author-name">${article.author}</span>
+          </div>
+          <a href="article.html?id=${article.id}" class="read-btn">
+            Read <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </div>
+      </div>
+    </article>
+  `;
+    }
+
+    /* --- Toast Notification Controller --- */
+    function showToast(message) {
+      // Check if a toast container exists, or create it
+      let toast = document.getElementById("global-toast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "global-toast";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+      }
+
+      // Populate content
+      toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${message}</span>`;
+
+      // Show toast
+      toast.classList.add("show");
+
+      // Automatically hide after 4 seconds
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 4000);
+    }
+
+  </script>
+</body>
+
+</html>

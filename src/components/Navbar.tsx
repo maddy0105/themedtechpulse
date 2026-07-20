@@ -14,6 +14,7 @@ export default function Navbar() {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Medtech News", href: "/news" },
+    { label: "Blogs", href: "/blog" },
     { label: "Patient Awareness", href: "/awareness" },
     { label: "About Us", href: "/about" },
   ];
